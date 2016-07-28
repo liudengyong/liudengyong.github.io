@@ -1,6 +1,6 @@
 {
-  "mode": 2,
   "version": "2.1",
+  "min_version":"1.5",
   "desc": "全新版本升级，增加新功能。",
   "apk_url": "http://liudengyong.github.io/com.jwish.cx.apk",
   "md5":"823ed4a5aa302835fc07d28426538a99"
