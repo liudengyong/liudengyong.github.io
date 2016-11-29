@@ -96,12 +96,12 @@
         getVedio();
 
         // 自适应窗口大小
-        window.resize(resizeCanvas);
         function resizeCanvas() {
                 canvas.attr("width", window.get(0).innerWidth);
                 canvas.attr("height", window.get(0).innerHeight);
          };
          resizeCanvas();
+         window.onresize = resizeCanvas;
     </script>  
 </body>  
 </html> 
