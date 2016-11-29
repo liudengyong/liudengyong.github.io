@@ -4,7 +4,8 @@
     <title>Video + Canvas</title>  
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />  
 </head>  
-<body>  
+<body>
+    <input type="button" title="开始游戏" value="开始游戏" onclick="getMedia()"/><br />  
     <video id="video" widht="100%" height="100%" autoplay="autoplay" style="display:none"></video>
     <canvas id="canvas" widht="100%" height="100%" ></canvas>
   
@@ -46,7 +47,9 @@
             }  
             else {  
                 alert('Native device media streaming (getUserMedia) not supported in this browser.');  
-            }  
+            }
+            initAnimate();
+            //drawVideoAtCanvas(video, context); 
         }  
   
         function successFunc(stream) {  
@@ -91,14 +94,6 @@
 //            drawVideoAtCanvas(video, context2);  
 //        }, false);  
   
-        //视频  
-        function getVedio() {
-            drawVideoAtCanvas(video, context);  
-        } 
-
-        getMedia();
-        //getVedio();
-
         // 自适应窗口大小
         function resizeCanvas() {
                 canvas.width = window.innerWidth;
@@ -231,6 +226,7 @@
 
         cube = new Cube(80);
         cube._initVector();
+
         function initAnimate(){
             cube._draw();
             animate();
@@ -251,8 +247,6 @@
 
             requestAnimationFrame(animate);
         }
-
-        initAnimate();
     </script>  
 </body>  
 </html> 
