@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />  
 </head>  
 <body>  
-    <video height="50%" autoplay="autoplay" style="display:none"></video>
-    <canvas id="canvas1" height="50%" ></canvas>
+    <video id="video" widht="100%" height="100%" autoplay="autoplay" style="display:none"></video>
+    <canvas id="canvas" widht="100%" height="100%" ></canvas>
   
     <script type="text/javascript">
 
         var video = document.querySelector('video');  
-        var audio, audioType, width, height;
+        var audio, audioType;
   
-        var canvas1 = document.getElementById('canvas1');  
-        var context1 = canvas1.getContext('2d');  
+        var canvas = document.getElementById('canvas');  
+        var context = canvas.getContext('2d');  
   
         navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;  
         window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;  
@@ -54,17 +54,7 @@
             }  
             else {  
                 video.src = window.URL && window.URL.createObjectURL(stream) || stream;  
-            }  
-  
-            //video.play();  
-  
-            // 音频  
-            audio = new Audio();  
-            audioType = getAudioType(audio);  
-            if (audioType) {  
-                audio.src = 'polaroid.' + audioType;  
-                audio.play();  
-            }  
+            }
         }  
         function errorFunc(e) {  
             alert('Error！'+e);  
@@ -73,7 +63,7 @@
         // 将视频帧绘制到Canvas对象上,Canvas每60ms切换帧，形成肉眼视频效果  
         function drawVideoAtCanvas(video, context) {
             window.setInterval(function () {
-                context.drawImage(video, 0, 0, width, height);
+                context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
                 context.fillStyle = "green";
                 context.fillRect(10, 10, 100, 100);  
             }, 60);  
@@ -98,9 +88,7 @@
   
         //视频  
         function getVedio() {
-            width = video.videoWidth;
-            height = video.videoHeight;
-            drawVideoAtCanvas(video, context1);  
+            drawVideoAtCanvas(video, context);  
         } 
 
         getMedia();
