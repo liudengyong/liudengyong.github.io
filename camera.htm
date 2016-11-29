@@ -8,11 +8,26 @@
 <input type="button" id="snap" value="拍照" onclick="takePic()"/>
 <canvas id="canvas" width="320" height="320"/> 
 </body>  
-<script type="text/javascript">  
+<script type="text/javascript"> 
+var exArray = []; //存储设备源ID  
+        MediaStreamTrack.getSources(function (sourceInfos) {  
+            for (var i = 0; i != sourceInfos.length; ++i) {  
+                var sourceInfo = sourceInfos[i];  
+                //这里会遍历audio,video，所以要加以区分  
+                if (sourceInfo.kind === 'video') {  
+                    exArray.push(sourceInfo.id);  
+                }  
+            }  
+        }); 
+        
 var getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);   
 getUserMedia.call(navigator, {   
-video: true,   
-audio: true   
+'video': {  
+                        'optional': [{  
+                            'sourceId': exArray[1] //0为前置摄像头，1为后置  
+                        }]  
+                    },  
+                    'audio':true  
 }, function(localMediaStream) {   
 var video = document.getElementById('video');   
 video.src = window.URL.createObjectURL(localMediaStream);   
