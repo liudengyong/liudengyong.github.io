@@ -1,10 +1,12 @@
 <html lang="zh-CN">  
 <head>  
 <meta charset="UTF-8">  
-<title>GetUserMedia实例</title>  
+<title>H5摄像头</title>  
 </head>  
 <body>  
-<video id="video" autoplay witdh="100%" height="100%"/>  
+<video id="video" autoplay witdh="50%" height="50%"></video>
+<input type="button" id="snap" value="拍照" onclick="takePic()"/>
+<canvas id="canvas" width="320" height="320"/> 
 </body>  
 <script type="text/javascript">  
 var getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);   
@@ -21,6 +23,14 @@ console.log("VideoTracks" , localMediaStream.getVideoTracks());
 };   
 }, function(e) {   
 console.log('Reeeejected!', e);   
-});   
+});
+
+function takePic() {
+	console.log("takePic start");   
+	var canvas = document.getElementById("canvas");
+	context = canvas.getContext("2d");
+	context.drawImage(video, 0, 0, 330, 250);
+	console.log("takePic end");   
+}
 </script>  
 <html>
