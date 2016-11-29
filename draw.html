@@ -36,7 +36,7 @@
                 navigator.getUserMedia({  
                     'video': {  
                         'optional': [{  
-                            'sourceId': exArray[1] //0为前置摄像头，1为后置  
+                            'sourceId': exArray[0] //0为前置摄像头，1为后置  
                         }]  
                     },  
                     'audio':false  
@@ -239,7 +239,7 @@
             
             context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
             context.fillStyle = "green";
-            context.fillRect(10, 10, 100, 100);
+            context.fillRect(10, 10, 100, 50);
             context.fillStyle = "white";
             context.fillText("Hello AR!", 15, 40);
 
