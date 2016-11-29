@@ -59,13 +59,14 @@
         function errorFunc(e) {  
             alert('Error！'+e);  
         }  
-          
+
         // 将视频帧绘制到Canvas对象上,Canvas每60ms切换帧，形成肉眼视频效果  
         function drawVideoAtCanvas(video, context) {
             window.setInterval(function () {
                 context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
                 context.fillStyle = "green";
-                context.fillRect(10, 10, 100, 100);  
+                context.fillRect(10, 10, 100, 100);
+                context.fillText("Hello AR!", 10, 50);
             }, 60);  
         }  
   
@@ -93,6 +94,14 @@
 
         getMedia();
         getVedio();
+
+        // 自适应窗口大小
+        window.resize(resizeCanvas);
+        function resizeCanvas() {
+                canvas.attr("width", window.get(0).innerWidth);
+                canvas.attr("height", window.get(0).innerHeight);
+         };
+         resizeCanvas();
     </script>  
 </body>  
 </html> 
