@@ -97,8 +97,8 @@
 
         // 自适应窗口大小
         function resizeCanvas() {
-                canvas.attr("width", window.get(0).innerWidth);
-                canvas.attr("height", window.get(0).innerHeight);
+                canvas.attr("width", window.innerWidth);
+                canvas.attr("height", window.innerHeight);
          };
          resizeCanvas();
          window.onresize = resizeCanvas;
