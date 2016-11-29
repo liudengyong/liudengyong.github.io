@@ -6,12 +6,12 @@
 </head>  
 <body>  
     <video height="50%" autoplay="autoplay" style="display:none"></video>
-    <canvas id="canvas1" height="120px" ></canvas>
+    <canvas id="canvas1" height="50%" ></canvas>
   
     <script type="text/javascript">
 
         var video = document.querySelector('video');  
-        var audio, audioType;  
+        var audio, audioType, width, height;
   
         var canvas1 = document.getElementById('canvas1');  
         var context1 = canvas1.getContext('2d');  
@@ -73,7 +73,7 @@
         // 将视频帧绘制到Canvas对象上,Canvas每60ms切换帧，形成肉眼视频效果  
         function drawVideoAtCanvas(video, context) {
             window.setInterval(function () {
-                context.drawImage(video, 0, 0, 90, 120);
+                context.drawImage(video, 0, 0, width, height);
                 context.fillStyle = "green";
                 context.fillRect(10, 10, 100, 100);  
             }, 60);  
@@ -97,7 +97,9 @@
 //        }, false);  
   
         //视频  
-        function getVedio() {  
+        function getVedio() {
+            width = video.width;
+            height = video.height;
             drawVideoAtCanvas(video, context1);  
         } 
 
