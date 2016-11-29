@@ -4,7 +4,8 @@
     <title>[HTML5]VIDEO+CANVAS</title>  
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />  
 </head>  
-<body>
+<body>  
+    <input type="button" title="开启摄像头" value="开启摄像头" onclick="getMedia()"/><br />  
     <video height="120px" autoplay="autoplay"></video><hr />  
     <canvas id="canvas1" height="120px" ></canvas><hr />  
     <canvas id="canvas2" height="120px"></canvas>  
@@ -87,7 +88,7 @@
             
         }
 
-        //getMedia();
+        function getMedia() {
         if (navigator.getUserMedia) { 
                 navigator.getUserMedia({  
                     'video': {  
@@ -99,11 +100,9 @@
                 }, successFunc, errorFunc);    //success是获取成功的回调函数  
         } else {  
                 alert('Native device media streaming (getUserMedia) not supported in this browser.');  
-        } 
-
-        //getVedio();
+        }
         drawVideoAtCanvas(video, context2);  
-  
+      }
     </script>  
 </body>  
 </html> 
