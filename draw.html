@@ -33,7 +33,7 @@
         });  
   
         function getMedia() {
-            document.getElementById('start').display = "none";
+            document.getElementById('start').style.display="none";
 
             if (navigator.getUserMedia) {  
                 navigator.getUserMedia({  
@@ -73,7 +73,7 @@
                 context.fillStyle = "green";
                 context.fillRect(10, 10, 100, 100);
                 context.fillStyle = "white";
-                context.fillText("Hello AR!", 12, 40);
+                context.fillText("Hello AR!", 2, 30);
             }, 60);  
         }  
   
@@ -239,7 +239,7 @@
             context.fillStyle = "green";
             context.fillRect(10, 10, 100, 50);
             context.fillStyle = "white";
-            context.fillText("Hello AR!", 40, 40);
+            context.fillText("Hello AR!", 34, 40);
 
             rotateY(cube.vectors);
             rotateX(cube.vectors);
